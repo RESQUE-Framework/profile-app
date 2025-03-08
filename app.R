@@ -6,6 +6,8 @@ library(jsonlite)
 library(RESQUER)
 library(lzstring)
 
+app_version <- "1.0.1"
+
 ui <- fluidPage(
 
     titlePanel("RESQUE Profile Builder"),
@@ -16,14 +18,15 @@ ui <- fluidPage(
 
       sidebarPanel(
         HTML("The RESQUE Profile App creates a visual 'fingerprint' of your personal research style. You first have to enter the necessary data into the <a href='https://resque-framework.github.io/collector-app/'>RESQUE Collector app</a>."),
-        HTML("Save your entries as a local .json file (go to 'Save to file ...' on the top left), and upload that .json file here (see below).<br>"),
-        fileInput("upload", "Upload your RESQUE json file(s) here:", buttonLabel = "Upload...", multiple = TRUE, accept = ".json"),
+        HTML("Save your entries as a local .json file (go to 'Save to file ...' on the top left), and upload that .json file here (see below).<br><br>"),
+        fileInput("upload", "Upload your RESQUE json file(s) here (you can upload multiple files):", buttonLabel = "Upload...", multiple = TRUE, accept = ".json"),
 
+        HTML("<i>You can click all the download buttons (visible after uploading your json file) in a row, and the reports are generated in the background (don't have to wait for them to finish one by one).</i>"),
         uiOutput("downloadButtons"),  # Dynamic UI for download buttons
 
         add_busy_spinner(position="top-left", spin="fingerprint", margin=c(10, 350)),
         HTML("<br><span style='font-size: 80%;'><b>Privacy note:</b> While the Collector app for entering the data does not store any data on our servers (everything is stored only locally on your machine), this Profile Builder needs to store a temporary copy of your json file and your resulting profile on a secured server of the Ludwig-Maximilians-Universität München. The files are not permanently stored.</span><br><br>"),
-        HTML(paste0("<span style='font-size: 60%;'>Package versions: RESQUER ", packageVersion("RESQUER"), "; OAmetrics ", packageVersion("OAmetrics"),"</span><br><br>"))
+        HTML(paste0("<span style='font-size: 60%;'>Package versions: RESQUER ", packageVersion("RESQUER"), "; OAmetrics ", packageVersion("OAmetrics"),". Profile Builder App ", app_version, "</span><br><br>"))
       ),
 
       mainPanel(
