@@ -19,8 +19,8 @@ Run locally:
 # Build and push OAmetrics package
 cd ~/Documents/Github/RESQUE-Framework/OAmetrics
 Rscript -e 'pkgdown:::build_site()'
-git commit -a -m 'Auto-upload to server'
-git push -u origin main
+  git commit -a -m 'Auto-upload to server'
+  git push -u origin main
 
 # Build and push RESQUER package
 cd ~/Documents/Github/RESQUE-Framework/RESQUER
